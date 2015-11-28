@@ -17,8 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        
+        //Bind Widget
+        bindWidget();
 
     }   // Main Method
+
+    private void bindWidget() {
+
+    }
 
 }   // Main Class นี่คือคลาสหลัก นะคะ
