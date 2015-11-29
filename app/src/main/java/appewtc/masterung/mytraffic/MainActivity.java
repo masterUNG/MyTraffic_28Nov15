@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private void createListView() {
 
         //Icon
-        int[] intIcon = new int[20];
+        final int[] intIcon = new int[20];
         intIcon[0] = R.drawable.traffic_01;
         intIcon[1] = R.drawable.traffic_02;
         intIcon[2] = R.drawable.traffic_03;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         intIcon[19] = R.drawable.traffic_20;
 
         //Title
-        String[] strTitle = new String[20];
+        final String[] strTitle = new String[20];
         strTitle[0] = "หัวข้อที่ 1";
         strTitle[1] = "หัวข้อที่ 2";
         strTitle[2] = "หัวข้อที่ 3";
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         strTitle[19] = "หัวข้อที่ 20";
 
         //Detail
-        String[] strDetail = new String[20];
+        final String[] strDetail = new String[20];
         strDetail[0] = "รายละเอียดที่ 1";
         strDetail[1] = "รายละเอียดที่ 2";
         strDetail[2] = "รายละเอียดที่ 3";
@@ -106,6 +107,21 @@ public class MainActivity extends AppCompatActivity {
 
         MyAdapter objMyAdapter = new MyAdapter(MainActivity.this, intIcon, strTitle, strDetail);
         trafficListView.setAdapter(objMyAdapter);
+
+
+        trafficListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent objIntent = new Intent(MainActivity.this, DetailActivity.class);
+                objIntent.putExtra("Title", strTitle[i]);
+                objIntent.putExtra("Image", intIcon[i]);
+                objIntent.putExtra("Detail", strDetail[i]);
+                startActivity(objIntent);
+
+
+            }   // event
+        });
 
     }   // createListView
 
