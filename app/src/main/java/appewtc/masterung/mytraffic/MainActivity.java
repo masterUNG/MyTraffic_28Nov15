@@ -103,6 +103,10 @@ public class MainActivity extends AppCompatActivity {
         strDetail[18] = "รายละเอียดที่ 19";
         strDetail[19] = "รายละเอียดที่ 20";
 
+
+        MyAdapter objMyAdapter = new MyAdapter(MainActivity.this, intIcon, strTitle, strDetail);
+        trafficListView.setAdapter(objMyAdapter);
+
     }   // createListView
 
     private void buttonController() {
